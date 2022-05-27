@@ -1,0 +1,27 @@
+Reset margin and padding style
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+.container {
+    display: flex;
+    margin: auto;
+    border: solid 1px black;
+    width: 550px;
+    flex-flow: row wrap;
+}
+
+
+.eachDiv {
+    border: solid 1px red;
+    flex-grow: 1;
+    height: 34px;
+}
+
+.break{
+    height: 0;
+    flex-basis: 100%;
+}
+
