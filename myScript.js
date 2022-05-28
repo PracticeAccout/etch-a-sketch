@@ -16,3 +16,17 @@ for (let outer = 0; outer < 16; outer++){  // For each iteration of the outer lo
     breakDiv.classList.add('break');
     theGrid.appendChild(breakDiv);    
 }
+
+
+// Create changeColor() function
+function changeColor(e){
+    e.stopPropagation();
+    e.target.classList.toggle("colorChange"); // active the colorChange class 
+}
+
+// Get reference of each div-grid
+const allDivGrid = document.querySelectorAll('.eachDiv');
+// For every grid-div with the pointer over it, 
+// call the function changeColor()
+allDivGrid.forEach(div => div.addEventListener('mouseover', changeColor));
+

@@ -19,6 +19,9 @@ Reset margin and padding style
     flex-grow: 1;
     height: 34px;
 }
+.colorChange {
+    background-color: yellow;
+}
 
 .break{
     height: 0;
