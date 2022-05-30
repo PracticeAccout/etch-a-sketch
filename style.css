@@ -3,24 +3,39 @@ Reset margin and padding style
     margin: 0;
     padding: 0;
 }
+#button-container{
+    display: flex;
+    justify-content: center;
+}
+
+
+.big-button{
+    padding: 10px;
+    margin-bottom: 20px;
+}
 
 
 .container {
     display: flex;
     margin: auto;
     border: solid 1px black;
-    width: 550px;
+    width: 650px;
+    height: 650px;
     flex-flow: row wrap;
+    box-sizing: border-box;
 }
 
 
 .eachDiv {
-    border: solid 1px red;
+    border: solid 1px rgb(0, 0, 0);
     flex-grow: 1;
-    height: 34px;
+    /* padding: 0;
+    margin: 0; */
+    box-sizing: border-box;
 }
+
 .colorChange {
-    background-color: yellow;
+    background-color: rgb(255, 0, 0);
 }
 
 .break{
