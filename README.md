@@ -62,7 +62,14 @@ grid
       random numbers between 0 and 255 (both included).
 >   * Join those with the "rgb" and the parentheses chars "()" and create 
       a string with the format: "rgb(number, number, number)"
->   * Update the color property of the corresponding (clicked) grid 
+>   * Update the color property of the corresponding (clicked) grid
+6. Add 10% of black if the clicked div-grid has already a color   
+>   * Extract the color values
+>   * Get 10% of each value for each click and subtracts that value from
+      the original one
+>   * Create an array with each one of the new values  
+>   * Return them as a rgb value         
   
 
-
+### Refactor
+. 

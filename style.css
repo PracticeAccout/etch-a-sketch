@@ -19,15 +19,15 @@ Reset margin and padding style
     display: flex;
     margin: auto;
     border: solid 1px rgb(0, 0, 0);
-    width: 550px;
-    height: 550px;
+    width: 450px;
+    height: 450px;
     flex-flow: row wrap;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
 }
 
 
 .eachDiv {
-    border: solid 1px rgb(255, 255, 255);
+    border: solid 1px rgb(0, 0, 0);
     flex-grow: 1;
     /* padding: 0;
     margin: 0; */

@@ -1,6 +1,6 @@
 // Create function gridsHeight
 function gridsHeight(gridNumber){
-    const BIG_SQUARE_AREA = Math.pow(550, 2);
+    const BIG_SQUARE_AREA = Math.pow(450, 2);
     const squareTotal = Math.pow(gridNumber, 2);
     const THIS_HEIGHT = Math.sqrt(BIG_SQUARE_AREA / squareTotal);
     return THIS_HEIGHT;
@@ -32,13 +32,36 @@ function makeGrid(gridNumber = 1){
 
 
 // Create goingBlack()
-// The function add the rgb value a 10% of black
+// The function add the rgb values a 10% of black
 function goingBlack(e){
+    // Extract the color values
     let rgbValue = e.target.style.backgroundColor.split(",");
-    console.log(rgbValue);
-    // Get only numbers from the rgbValue
-    // for (eachChar)
+    // Get only numbers from the rgbValue and put them in a string
+    let stringRgbValues = "";
+    for (eachChar of rgbValue){
+        stringRgbValues += eachChar.trim().match(/[0-9]/g).join("") + ",";
+    }
+    // Convert the stringRgbValues into an arrayRGBValues
+    let arrayRGBValues = stringRgbValues.split(",").slice(0, 3);
+    // Lets get 10% of each value in the array and create a new array
+    // subtracting that value of the original value
+    let finalColorsArray = [];
+    for (eachNumber of arrayRGBValues){
+        if (eachNumber == 0){
+            finalColorsArray.push(eachNumber);
+            continue;
+        }
+        finalColorsArray.push(eachNumber - ((eachNumber*10) / 100).toFixed(0))
+    } 
+
+    // Create final rgb string value
+    let finalColors = "";
+    finalColors = finalColorsArray.join(",");
+    finalColors = "rgb(" + finalColors + ")";
+    return e.target.style.backgroundColor = finalColors;  // change colors to a 10% more black total 
 }
+
+
 
 // Create changeColor() function
 function changeColor(e){
@@ -54,6 +77,7 @@ function changeColor(e){
         let rand = Math.floor(Math.random() * 256);
         colorArr.push(rand);
     }
+    // Create final rgb string value
     color = colorArr.join(",");
     color = "rgb(" + color + ")";
     return e.target.style.backgroundColor = color;
