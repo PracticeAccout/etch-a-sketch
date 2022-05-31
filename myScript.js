@@ -1,6 +1,6 @@
 // Create function gridsHeight
 function gridsHeight(gridNumber){
-    const BIG_SQUARE_AREA = Math.pow(650, 2);
+    const BIG_SQUARE_AREA = Math.pow(550, 2);
     const squareTotal = Math.pow(gridNumber, 2);
     const THIS_HEIGHT = Math.sqrt(BIG_SQUARE_AREA / squareTotal);
     return THIS_HEIGHT;
@@ -26,15 +26,37 @@ function makeGrid(gridNumber = 1){
         }
     }
     allDivGrid = theGrid.querySelectorAll('.eachDiv');
-    allDivGrid.forEach(div => div.addEventListener('mouseover', changeColor));
+    allDivGrid.forEach(div => div.addEventListener('click', changeColor));
     return;
 }
 
 
+// Create goingBlack()
+// The function add the rgb value a 10% of black
+function goingBlack(e){
+    let rgbValue = e.target.style.backgroundColor.split(",");
+    console.log(rgbValue);
+    // Get only numbers from the rgbValue
+    // for (eachChar)
+}
+
 // Create changeColor() function
 function changeColor(e){
     e.stopPropagation();
-    e.target.classList.toggle("colorChange"); // activate/deactivate the colorChange class 
+    if (e.target.style.backgroundColor != ""){
+        return goingBlack(e);
+    }
+    // Lets generate 3 random numbers each one between 0
+    // and 256
+    let colorArr = [];
+    let color = "";
+    for (let num = 0; num < 3; num++){
+        let rand = Math.floor(Math.random() * 256);
+        colorArr.push(rand);
+    }
+    color = colorArr.join(",");
+    color = "rgb(" + color + ")";
+    return e.target.style.backgroundColor = color;
 }
 
 // getNumber ask the user for a number for the grid
@@ -51,7 +73,7 @@ function getNumber(){
 }
 
 
-// Call the function makeGrid at least once every time the page is load
+// Call the function makeGrid at least once every time the page is loaded
 window.onload = function(){
     makeGrid();
 };
@@ -68,7 +90,7 @@ const theGrid = document.getElementById('main-container');
 let allDivGrid = theGrid.querySelectorAll('.eachDiv');
 // For every grid-div with the pointer over it, 
 // call the function changeColor()
-allDivGrid.forEach(div => div.addEventListener('mouseover', changeColor));
+allDivGrid.forEach(div => div.addEventListener('click', changeColor));
 
 
 // Get button reference

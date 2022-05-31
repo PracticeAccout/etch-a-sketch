@@ -55,4 +55,14 @@ your grid like a pen would.
       should be removed and a new grid should be generated in the same
       total space as before. 
       Tip: Set limit ot a maximum of 100 squares. 
-         
+5. Generate random RGB values every time the mouse hover over the 
+grid
+>   * Info: RGB values: (red, green, blue)-intensity as an integer between 0 and 255
+>   * Inside the changeColor() function, add a loop that generates three
+      random numbers between 0 and 255 (both included).
+>   * Join those with the "rgb" and the parentheses chars "()" and create 
+      a string with the format: "rgb(number, number, number)"
+>   * Update the color property of the corresponding (clicked) grid 
+  
+
+
