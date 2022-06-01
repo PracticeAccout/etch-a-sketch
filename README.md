@@ -71,5 +71,26 @@ grid
 >   * Return them as a rgb value         
   
 
-### Refactor
-. 
+## Refactor
+### Non-Functional Requirements
+1. Create a control panel to the left of the page
+>   * Create a grid selector panel:
+
+
+2. Change how the big grid looks like
+>   * Remove the border of the big box
+>   * Add shadow to it
+>   * Remove the border of each div-grid
+>   * If more than one div-grid
+>      - Add white border (the purpose is not to show the borders)
+
+3. Add a grid size controller in the form of a range input
+>   * See `Functional Requirements` below 
+
+
+### Functional Requirements
+1. Update grid size
+>   * Get reference of range node: sizeOfGrid
+>   * Create an event handler for every time the range input change
+      (here I'm going to use a Global Event Handler, the onchange property of the HTMLElement  )  
+>       

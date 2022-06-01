@@ -22,11 +22,13 @@ function makeGrid(gridNumber = 1){
             // Create breakDiv element
             let breakDiv = document.createElement('div');
             breakDiv.classList.add('break');
-            theGrid.appendChild(breakDiv);    
+            theGrid.appendChild(breakDiv);
         }
     }
     allDivGrid = theGrid.querySelectorAll('.eachDiv');
     allDivGrid.forEach(div => div.addEventListener('click', changeColor));
+    allDivGrid.forEach(div => div.style.border = "0.1em solid #ffffff"); // add white border to all div-grids   
+    // console.log(allDivGrid[0].style);
     return;
 }
 
@@ -85,25 +87,23 @@ function changeColor(e){
 
 // getNumber ask the user for a number for the grid
 // and remove all elements of the main-container
-function getNumber(){
-    let thisNumber = prompt("Grid number");
-    while (thisNumber > 100){
-        alert("Grid number can't be greater than 100");
+function getNumber(thisNumber){
+    // Remove every grid-div from the old big grid before 
+    while (theGrid.hasChildNodes()){ 
+        theGrid.removeChild(theGrid.firstChild) 
     }
-    while (theGrid.hasChildNodes()){ // remove every grid-div from the old big grid before 
-        theGrid.removeChild(theGrid.firstChild) // generating the new one
-    }
-    makeGrid(thisNumber);
+    // Generating the new one
+    makeGrid(thisNumber); 
 }
 
 
 // Call the function makeGrid at least once every time the page is loaded
 window.onload = function(){
-    makeGrid();
+    makeGrid(sizeOfGrid.value);
 };
 
 
-// ==REFERENCES==
+// ==========REFERENCES========================
 // Get grid node reference
 const theGrid = document.getElementById('main-container');
 
@@ -117,7 +117,13 @@ let allDivGrid = theGrid.querySelectorAll('.eachDiv');
 allDivGrid.forEach(div => div.addEventListener('click', changeColor));
 
 
-// Get button reference
-const theButton = document.querySelector('.big-button');
-// Add event listener for when the button is clicked
-theButton.addEventListener('click', getNumber);
+// Get reference of range node
+const sizeOfGrid = document.getElementById('sizeOfGrid');
+// Call makeGrid() function
+sizeOfGrid.onchange = (e) => getNumber(e.target.value);
+
+// Get reference of value of grid text
+const sizeValue = document.getElementById('sizeValue');
+// Update the text every time a grid is generated
+sizeOfGrid.onmousemove = (e) => sizeValue.textContent = `${e.target.value} x ${e.target.value}`;
+
