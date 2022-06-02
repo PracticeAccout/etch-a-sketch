@@ -85,12 +85,27 @@ grid
 >      - Add white border (the purpose is not to show the borders)
 
 3. Add a grid size controller in the form of a range input
->   * See `Functional Requirements` below 
+4. Add a button that toggle one color mode
+
 
 
 ### Functional Requirements
 1. Update grid size
 >   * Get reference of range node: sizeOfGrid
 >   * Create an event handler for every time the range input change
-      (here I'm going to use a Global Event Handler, the onchange property of the HTMLElement  )  
->       
+      (here I'm going to use a Global Event Handler, the onchange property of the HTMLElement)  
+2. Button that toggle the `one color mode`  
+>   * Get button reference
+>     * Onclick, the btn should change its appearance
+>           - On hover, get bigger
+>           - On click, background black, letter white
+3. The `changeColor()` function should check if the Color Mode is
+   active.
+       - If Color Mode active 
+         - `ChangeColor()` should check if button is activated. 
+         - If true: 
+            - Click over grid will return the color in the color selector     
+4. If goingBlack is activated: 
+      - `ChangeColor()` function should check if clicked grid has a color and button is activated
+      - If button is activated, but grid has no color, default (rainbow coloring) will run. Then the goingBlack
+      - If both are truth, each click over the grid will add a 10% of black to each rgb value
