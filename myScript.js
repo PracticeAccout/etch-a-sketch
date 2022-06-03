@@ -1,4 +1,4 @@
-// Create function gridsHeight
+// gridsHeight() 
 function gridsHeight(gridNumber){
     const BIG_SQUARE_AREA = Math.pow(450, 2);
     const squareTotal = Math.pow(gridNumber, 2);
@@ -36,6 +36,7 @@ function makeGrid(gridNumber = 1){
 // Create goingBlack()
 // The function add the rgb values a 10% of black
 function goingBlack(e){
+
     // Extract the color values
     let rgbValue = e.target.style.backgroundColor.split(",");
     // Get only numbers from the rgbValue and put them in a string
@@ -53,7 +54,7 @@ function goingBlack(e){
             finalColorsArray.push(eachNumber);
             continue;
         }
-        finalColorsArray.push(eachNumber - ((eachNumber * 10) / 100).toFixed(0))
+        finalColorsArray.push(Math.trunc(eachNumber - ((eachNumber * 10) / 100)))
     } 
     console.log(finalColorsArray);
     // Create final rgb string value
@@ -63,16 +64,17 @@ function goingBlack(e){
     return e.target.style.backgroundColor = finalColors;  // change colors to a 10% more black total 
 }
 
-// Rainbow mode will be active by default
+// Rainbow is default mode
 // Create changeColor() function
 function changeColor(e){
     e.stopPropagation();
     // 
     if (oneColorBtn.classList.length > 0){
         return e.target.style.backgroundColor = oneColorSelector.value;
-    }
-    if (e.target.style.backgroundColor != "" && goingBlackBtn.classList.length > 0){
+    }else if (e.target.style.backgroundColor != "" && goingBlackBtn.classList.length > 0){
         return goingBlack(e);
+    } else if (eraserBtn.classList.length > 0){
+        return e.target.style.backgroundColor = '#f5f5dc';
     }
     // Lets generate 3 random numbers each one between 0
     // and 256
@@ -95,7 +97,7 @@ function getNumber(thisNumber){
     while (theGrid.hasChildNodes()){ 
         theGrid.removeChild(theGrid.firstChild) 
     }
-    // Generating the new one
+    // ...generating the new one
     makeGrid(thisNumber); 
 }
 
@@ -125,6 +127,10 @@ const sizeOfGrid = document.getElementById('sizeOfGrid');
 // Call makeGrid() function through the getNumber() function
 sizeOfGrid.onchange = (e) => getNumber(e.target.value);
 
+// Get reference of color selector
+const oneColorSelector = document.getElementById('oneColor');
+
+
 // Get reference of value of grid text
 const sizeValue = document.getElementById('sizeValue');
 // Update the text every time a grid is generated
@@ -132,24 +138,52 @@ sizeOfGrid.onmousemove = (e) => sizeValue.textContent = `${e.target.value} x ${e
 
 // Get one color mode button reference
 const oneColorBtn = document.getElementById('oneColorBtn');
-// Toggle the button when clicked
+// Toggle the color mode button when clicked
 oneColorBtn.onclick = e => {
     e.target.classList.toggle('oneColorBtn-active');
+    // Deactivate other buttons
     // Remove active state from goingBlackBtn
     if (goingBlackBtn.classList.length > 0){
         goingBlackBtn.removeAttribute('class');
+    } else if (eraserBtn.classList.length > 0){
+        eraserBtn.removeAttribute('class')
     }
 }
 
-// Get reference of color selector
-const oneColorSelector = document.getElementById('oneColor');
+
 // Get reference of goingBlack button
 const goingBlackBtn = document.getElementById('goingBlack');
+// Toggle the going black mode button when clicked
 goingBlackBtn.onclick = e => {
     e.target.classList.toggle('goingBlack-active');
+    // Deactivate other buttons
     // Remove active state from oneColorBtn
     if (oneColorBtn.classList.length > 0){
         oneColorBtn.removeAttribute('class');
+    } else if (eraserBtn.classList.length > 0){
+        eraserBtn.removeAttribute('class')
     }
 } 
 
+
+// Get reference of eraser button
+const eraserBtn = document.getElementById('erase-btn');
+// Toggle the eraser mode button when clicked
+eraserBtn.onclick = e => {
+    e.target.classList.toggle('erase-btn-active')
+    // Deactivate other buttons
+    // Remove active state from any other button
+    if (oneColorBtn.classList.length > 0){
+        oneColorBtn.removeAttribute('class');
+    } else if (goingBlackBtn.classList.length > 0){
+        goingBlackBtn.removeAttribute('class');
+    }
+}  
+
+// Get reference of clear button
+const clearBtn = document.getElementById('clear-btn');
+// Add event handler for when button is clicked
+clearBtn.onclick = function clearGrid(){
+    const allDivGrid = document.querySelectorAll('.eachDiv');
+    getNumber(Math.sqrt(allDivGrid.length));
+};

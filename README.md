@@ -86,6 +86,9 @@ grid
 
 3. Add a grid size controller in the form of a range input
 4. Add a button that toggle one color mode
+5. Add a button that toggle the going black mode
+6. Add a button that erase all of the grid
+7. Add a clear button
 
 
 
@@ -96,16 +99,39 @@ grid
       (here I'm going to use a Global Event Handler, the onchange property of the HTMLElement)  
 2. Button that toggle the `one color mode`  
 >   * Get button reference
->     * Onclick, the btn should change its appearance
->           - On hover, get bigger
->           - On click, background black, letter white
-3. The `changeColor()` function should check if the Color Mode is
+>   * On hover, get bigger (CSS)
+>   * Add event handler: If activate it
+       - Change button's appearance
+         - Background black, letter white
+         - Remove any other clicked button
+       - changeColor() function should check if color mode is
    active.
        - If Color Mode active 
-         - `ChangeColor()` should check if button is activated. 
-         - If true: 
-            - Click over grid will return the color in the color selector     
-4. If goingBlack is activated: 
-      - `ChangeColor()` function should check if clicked grid has a color and button is activated
-      - If button is activated, but grid has no color, default (rainbow coloring) will run. Then the goingBlack
-      - If both are truth, each click over the grid will add a 10% of black to each rgb value
+          - Click over grid will return the color in the color selector     
+3. Button that toggle `goingBlack` mode:
+>   * Get button reference
+>   * On hover, get bigger (CSS)
+>   * Add event handler: If activate it
+       - Change button's appearance
+         - Background black, letter white
+         - Remove any other clicked button
+       - changeColor() function should check if goingBlack mode is
+   active.
+         - If active:
+           - but grid has no color, default (rainbow coloring) will run. Then the goingBlack.
+           - and grid has color, each click over the grid will add a 10% of black to each rgb value
+4. Eraser button
+>    * Get button reference
+>    * Change button's appearance on hover
+>    * Add event handler. If activate it:
+       - Change button's appearance
+         - Background black, letter white
+         - Remove any other clicked button
+       - changeColor() should check if eraser button is active
+         - If active:
+           - every click will change color to body color: beige
+5. Clear button
+>    * Get button reference
+>    * Change button's appearance on hover
+>    * Add event handler. If clicked:
+       - call clearGrid: clearGrid get number of grids and call getNumber
