@@ -137,3 +137,5 @@ grid
 >    * Change button's appearance on hover
 >    * Add event handler. If clicked:
        - call clearGrid: clearGrid get number of grids and call getNumber
+6. Change coloring behavior: 
+>     * changeColor should only work if mouse was clicked and then pass over

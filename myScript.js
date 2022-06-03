@@ -26,7 +26,8 @@ function makeGrid(gridNumber = 1){
         }
     }
     allDivGrid = theGrid.querySelectorAll('.eachDiv');
-    allDivGrid.forEach(div => div.addEventListener('click', changeColor));
+    allDivGrid.forEach(div => div.addEventListener('mouseover', changeColor));
+    allDivGrid.forEach(div => div.addEventListener('mousedown', changeColor));
     allDivGrid.forEach(div => div.style.border = "0.1em solid #ffffff"); // add white border to all div-grids   
     // console.log(allDivGrid[0].style);
     return;
@@ -67,9 +68,9 @@ function goingBlack(e){
 // Rainbow is default mode
 // Create changeColor() function
 function changeColor(e){
-    console.log(e.type)
-    e.stopPropagation();
-    // 
+    // If no click in the page, return
+    if ( !mouseDown) return; 
+ 
     if (oneColorBtn.classList.length > 0){
         return e.target.style.backgroundColor = oneColorSelector.value;
     }else if (e.target.style.backgroundColor != "" && goingBlackBtn.classList.length > 0){
@@ -120,7 +121,15 @@ const theGrid = document.getElementById('main-container');
 let allDivGrid = theGrid.querySelectorAll('.eachDiv');
 // For every grid-div with the pointer over it, 
 // call the function changeColor()
-allDivGrid.forEach(div => div.addEventListener('click', changeColor));
+allDivGrid.forEach(div => div.addEventListener('mouseover', changeColor));
+allDivGrid.forEach(div => div.addEventListener('mousedown', changeColor));
+
+// This event handler will listen to clicks over the body
+// It will be used in the changeColor() function
+let mouseDown = false;
+document.body.onmousedown = () => mouseDown = true;
+document.body.onmouseup = () => mouseDown = false
+
 
 
 // Get reference of range node
