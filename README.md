@@ -1,5 +1,5 @@
 # etch-a-sketch
-[Live Demo]()
+[Live Demo](https://practiceaccout.github.io/etch-a-sketch/)
 ## Requirements
 ### Non-Functional Requirements
 1.  Create a webpage with a 16x16 grid of square divs

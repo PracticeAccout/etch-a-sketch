@@ -67,6 +67,7 @@ function goingBlack(e){
 // Rainbow is default mode
 // Create changeColor() function
 function changeColor(e){
+    console.log(e.type)
     e.stopPropagation();
     // 
     if (oneColorBtn.classList.length > 0){

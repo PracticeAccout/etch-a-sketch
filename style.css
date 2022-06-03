@@ -8,7 +8,7 @@
 body {
     background-color: beige;
     display: flex;
-    padding-top: 60px;
+    padding-top: 100px;
     justify-content: center;
     gap: 100px;
 }
