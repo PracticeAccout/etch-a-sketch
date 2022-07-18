@@ -1,5 +1,5 @@
 # etch-a-sketch
-[Live Demo](https://practiceaccout.github.io/etch-a-sketch/)
+[Live Demo](https://yuniel-reyes.github.io/etch-a-sketch/)
 ![etch-a-sketch](https://user-images.githubusercontent.com/99272318/171836694-02cee1db-f427-4f37-a82e-bcba4819a3f9.png)
 
 ## Requirements
